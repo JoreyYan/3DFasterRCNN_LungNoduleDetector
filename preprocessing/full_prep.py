@@ -123,18 +123,24 @@ def savenpy(id,filelist,prep_folder,data_path,use_existing=True):
     print(name+' done')
     
 def full_prep(data_path,prep_folder,n_worker = None,use_existing=True):
+	# 忽略警告信息
     warnings.filterwarnings("ignore")
+        # 如果路径不存在 则新建路径
     if not os.path.exists(prep_folder):
         os.mkdir(prep_folder)
 
-            
+        # 开始多进程处理         
     print('starting preprocessing')
+        #自定义进程数 n_worker=4
     pool = Pool(n_worker)
+        #遍历数据路径  将mhd文件存为 npy
     filelist = [f for f in os.listdir(data_path) if '.mhd' in f ]
+        #通过装饰器构建新的函数 这里固定了很多参数
     partial_savenpy = partial(savenpy,filelist=filelist,prep_folder=prep_folder,
                               data_path=data_path,use_existing=use_existing)
-
+        # 输出共有多少个文件
     N = len(filelist)
+        # 多进程执行mhd转化为npy的过程
     _=pool.map(partial_savenpy,range(N))
     pool.close()
     pool.join()
