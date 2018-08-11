@@ -24,8 +24,9 @@ def parse_args():
     """
     Parse input arguments
     """
+    # 设置解析器
     parser = argparse.ArgumentParser(description='Train a Fast R-CNN network')
-
+    # 添加选项参数
     parser.add_argument('--solver', dest='solver',
                         help='solver prototxt',
                         default=None, type=str)
@@ -50,11 +51,11 @@ def parse_args():
     parser.add_argument('--set', dest='set_cfgs',
                         help='set config keys', default=None,
                         nargs=argparse.REMAINDER)
-
+    #如果只输入了函数 但是没有参数 则输出帮助
     if len(sys.argv) == 1:
         parser.print_help()
         sys.exit(1)
-
+    # 解析命令行参数 并返回
     args = parser.parse_args()
     return args
 
@@ -78,6 +79,7 @@ def combined_roidb(imdb_names):
     return imdb, roidb
 
 if __name__ == '__main__':
+    # 获取命令行参数 并输出
     args = parse_args()
 
     print('Called with args:')
