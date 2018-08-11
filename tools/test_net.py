@@ -22,6 +22,7 @@ def parse_args():
     """
     Parse input arguments
     """
+    #设定解析器
     parser = argparse.ArgumentParser(description='Test a Fast R-CNN network')
     parser.add_argument('--gpu', dest='gpu_id', help='GPU id to use',
                         default=0, type=int)
