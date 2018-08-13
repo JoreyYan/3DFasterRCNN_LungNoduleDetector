@@ -84,14 +84,14 @@ if __name__ == '__main__':
 
     print('Called with args:')
     print(args)
-
+    #配置参数是否存在
     if args.cfg_file is not None:
         cfg_from_file(args.cfg_file)
     if args.set_cfgs is not None:
         cfg_from_list(args.set_cfgs)
 
     # cfg.GPU_ID = args.gpu_id
-
+    #如果参数存在 输出配置信息
     print('Using config:')
     pprint.pprint(cfg)
 
@@ -118,5 +118,6 @@ if __name__ == '__main__':
     #train_net(args.solver, roidb, output_dir,
     #          pretrained_model=args.pretrained_model,
     #          max_iters=args.max_iters)
+    #调用train_net开始训练
     train_net(args.solver, roidb_train,roidb_val, output_dir,
               max_iters=args.max_iters, pretrained_model=args.pretrained_model)
