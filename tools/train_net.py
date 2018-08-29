@@ -103,7 +103,7 @@ if __name__ == '__main__':
     # set up caffe
     caffe.set_mode_cpu()
     # caffe.set_device(args.gpu_id)
-
+    #这是将生成的 1_clean.npy 读入
     imdb_train, roidb_train = combined_roidb(args.imdb_train)
     print '{:d} roidb entries'.format(len(roidb_train))
 
