@@ -1,10 +1,10 @@
 from preprocessing import full_prep
 from config_submit import config as config_submit
-import sys
+import sys111
+#
 
 
-
-datapath = config_submit[sys.argv[1]]
+#datapath = config_submit[sys.argv[1]]
 prep_result_path = config_submit[sys.argv[2]]
 
 
